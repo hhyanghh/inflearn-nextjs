@@ -51,3 +51,15 @@ export async function getStaticProps() {
     revalidate: 60 * 60, // 아예 주지 않아도 상관없다. (업데이트 자주 받아야할 데이터가 아니기 때문에)
   };
 }
+
+// import() 함수 : 동적으로 모듈을 가져올 때 사용한다.
+// 이 함수는 Promise를 반환하며 , 모듈을 비동기적으로 가져오는데 사용된다.
+
+// 모듈이 기본적으로 export default로 내보내진 경우
+// import 함수를 사용하여 해당 모듈을 가져올 때
+// .default를 통해 기본 내보내기 (default export) 값을 참조한다.
+
+// 따라서 import('../public/stores.json').default 코드는 Next.js에서
+// stores.json 파일을 가져올 때 해당 모듈의 기본 내보내기 값을 가져오는 것을 의미합니다.
+
+// 코드 스플리트

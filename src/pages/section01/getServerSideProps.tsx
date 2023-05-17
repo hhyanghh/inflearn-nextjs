@@ -24,3 +24,5 @@ export const getServerSideProps = async ({ res }) => {
     props: { data },
   };
 };
+
+// production 환경에서 확인하기
