@@ -1,12 +1,20 @@
 import Link from 'next/link';
-import { Fragment } from 'react';
+import { Fragment, useEffect } from 'react';
 import Header from '../../components/common/Header';
 import styles from '../../src/styles/header.module.scss';
 // TODO : icon import 확인하기
 // import { RxCopy, VscFeedback } from 'react-icons/all';
 import MapSection from '../../components/home/MapSection';
+import useStores from '../../hooks/useStores';
+import { Store } from '../../types/store';
 
-export default function Home() {
+export default function Home({ stores }) {
+  console.log(stores);
+  const { initializeStores } = useStores();
+
+  useEffect(() => {
+    initializeStores(stores);
+  }, [initializeStores, stores]);
   return (
     <Fragment>
       <Header
@@ -32,4 +40,16 @@ export default function Home() {
       </main>
     </Fragment>
   );
+}
+
+export async function getStaticProps() {
+  /** TODO: next api routes로 불러오기
+   */
+  const stores = (await import('../../public/stores.json')).default;
+  console.log(stores, 'stores');
+
+  return {
+    props: { stores },
+    revalidate: 60 * 60, // 아예 주지 않아도 상관없다. (업데이트 자주 받아야할 데이터가 아니기 때문에)
+  };
 }
