@@ -36,7 +36,7 @@ const Map = ({
     mapRef.current = map;
 
     if (onLoad) {
-      onLoad(map);
+      onLoad(map); // map 객체 emit
     }
   };
 
