@@ -9,7 +9,6 @@ import useStores from '../../hooks/useStores';
 import { Store } from '../../types/store';
 
 export default function Home({ stores }) {
-  console.log(stores);
   const { initializeStores } = useStores();
 
   useEffect(() => {
@@ -46,7 +45,6 @@ export async function getStaticProps() {
   /** TODO: next api routes로 불러오기
    */
   const stores = (await import('../../public/stores.json')).default;
-  console.log(stores, 'stores');
 
   return {
     props: { stores },
